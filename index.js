@@ -2,6 +2,12 @@
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+var geocoder = require('simple-geocoder');
+var request = require('request');
+
+
+// Read the .env file
+require('dotenv').config();
 
 // Declare your app
 var app = express();
@@ -20,7 +26,18 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  res.render('result');
+	geocoder.geocode(req.body.userquery, function(success, location) {
+		if(success) {
+			request(process.env.DARK_SKY_BASE_URL + location.y.toFixed(4) + ',' + location.x.toFixed(4), (err, response, body) => {
+				console.log("Location: ", location);
+				var latLong = JSON.parse(body);
+				var result = JSON.parse(body).currently;
+				var dailyWeather = JSON.parse(body).daily;
+				Date.now();
+				res.render('result', {weather: result, coordinates: latLong, query: req.body.userquery, summary: dailyWeather});
+			})
+		}
+  	});
 });
 
 // Listen on PORT 3000

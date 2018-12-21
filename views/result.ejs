@@ -1,1 +1,90 @@
-<h2>Results Page</h2>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1><%= query %></h1>
+	<div class="wrapper">
+		<div class="row">
+			<div class="col s12 m7">
+			  <div class="card">
+			    <div class="card-image">
+			      <img src="#">
+			      <span class="card-title"></span>
+			    </div>
+			    <div class="card-content">
+			      <p><%= summary.data[0].summary %></p>
+			      <p>High Temp <%= summary.data[0].temperatureHigh %></p>
+			      <p>Low Temp <%= summary.data[0].temperatureLow %></p>
+			      <p>Wind Speed <%= summary.data[0].windSpeed %></p>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m7 cards">
+			  <div class="card">
+			    <div class="card-image">
+			      <img src="#">
+			    </div>
+			    <div class="card-content">
+			      <p><%= summary.data[1].summary %></p>
+			      <p>High Temp <%= summary.data[1].temperatureHigh %></p>
+			      <p>Low Temp <%= summary.data[1].temperatureLow %></p>
+			      <p>Wind Speed <%= summary.data[1].windSpeed %></p>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		<div class="row">
+		    <div class="col s12 m7 cards">
+		      <div class="card">
+		        <div class="card-image">
+		          <img src="#">
+		        </div>
+		        <div class="card-content">
+		          <p><%= summary.data[2].summary %></p>
+		          <p>High Temp <%= summary.data[2].temperatureHigh %></p>
+			      <p>Low Temp <%= summary.data[2].temperatureLow %></p>
+			      <p>Wind Speed <%= summary.data[2].windSpeed %></p>
+		        </div>
+		      </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col s12 m7 cards">
+			  <div class="card">
+			    <div class="card-image">
+			      <img src="#">
+			    </div>
+			    <div class="card-content">
+			      <p><%= summary.data[3].summary %></p>
+			      <p>High Temp <%= summary.data[3].temperatureHigh %></p>
+			      <p>Low Temp <%= summary.data[3].temperatureLow %></p>
+			      <p>Wind Speed <%= summary.data[3].windSpeed %></p>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m7 cards">
+			  <div class="card">
+			    <div class="card-image">
+			      <img src="#">
+			    </div>
+			    <div class="card-content">
+			      <p><%= summary.data[4].summary %></p>
+			      <p>High Temp <%= summary.data[4].temperatureHigh %></p>
+			      <p>Low Temp <%= summary.data[4].temperatureLow %></p>
+			      <p>Wind Speed <%= summary.data[4].windSpeed %></p>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>	
+</body>
+</html>
