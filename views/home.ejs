@@ -1,12 +1,16 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>How's the Weather</title>
+</head>
 <body>
-	<h1>Weather Update</h1>
+    <h1 class="header center">How's the Weather Out There?</h1>
 	<form method="POST" action="/">
 		<div>
 			<label>Enter your location</label>
-			<input type="text" name="userquery" placeholder="ex. seattle, wa">
+			<input type="text" name="userquery" autocomplete="off" placeholder="ex. seattle, wa">
 		</div>
-		<input type="submit" value="Search Now!">
+		<input id="submit" type="submit" value="Submit">
 	</form>
 </body>
 </html>

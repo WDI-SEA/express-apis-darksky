@@ -37,64 +37,28 @@ app.post('/', function(req, res){
 					// Parse the data 
 					var result = JSON.parse(body);
 					currentTemp = result.currently.temperature;
-					console.log(currentTemp);
+					humidity = result.currently.humidity;
+					windSpeed = result.currently.windSpeed;
+					summary = result.currently.summary;
+					// console.log(currentTemp);
 
 					// Look at the data
-					console.log(result); 
-					res.render('result', { currentTemp: currentTemp });
-
-
+					// console.log(result); 
+					res.render('result', { currentTemp: currentTemp, humidity: humidity, windSpeed: windSpeed, summary: summary  });
 					}
-					// TODO: Do something with that data!
 				});
-
+		} else {
+			res.send('Error, check your logs');
 		}
-		// res.send('error');
 	});
 });
 
-
-
-
+// UNDER CONSTRUCTION
+// app.get('/current', function(req, res){
+//   res.render('current');
+// });
 
 // Listen on PORT 3000
 app.listen(3000, function(){
   console.log('I\'m listening to the smooth sounds of port 3000 in the morning. ☕');
 });
-
-
-
-// app.post('/', function(req, res){
-// 	geocoder.geocode(req.body.userquery, function(success, locations) {
-// 		if(success) {
-// 			// res.render('result', { lat: locations.y, lng: locations.x, q: req.body.userquery }); 
-
-
-// 			var urlToCall = process.env.DARK_SKY_BASE_URL + locations.y + ',' + locations.x;
-// 			request(urlToCall, function(error, response, body) {
-// 				if(error) {
-// 					console.log('Error', err);
-//           			res.send('Error, check your logs');
-// 				} else {
-// 					// Parse the data 
-// 					var result = JSON.parse(body);
-// 					currentTemperature = result.currently.temperature;
-// 					console.log(currentTemperature);
-
-// 					// Look at the data
-// 					console.log(result); 
-// 					res.render('result', { currentTemperature: currentTemperature });
-
-
-// 					}
-// 					// TODO: Do something with that data!
-// 				});
-
-
-
-
-
-// 		}
-// 		res.send('error');
-// 	});
-// });

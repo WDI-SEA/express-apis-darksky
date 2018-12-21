@@ -1,6 +1,16 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>How's the Weather</title>
+</head>
 <body>
-	<h1>Results Page</h1>
-	<h3><%= currentTemp %></h3> 
-
+	<div id="resultBox">
+		<h3 class="results">Current Weather</h3>
+		<h3 class="results">Temperature:  <span id="rs1"><%= currentTemp %>&deg;<span></h3>
+		<h3 class="results">Humity:  <span id="rs2"><%= humidity %><span></h3>
+		<h3 class="results">Wind Speed:  <span id="rs3"><%= windSpeed %><span></h3>
+		<h3 class="results" id="summary"><%= summary %></h3> 
+	</div>
 </body>
+</html>
+
