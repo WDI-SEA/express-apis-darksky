@@ -6,7 +6,55 @@
 <body>
 	<h2>Current temperature for your requested location:</h2>
 
-	<%= temp %>° F
+	<%= currentTemp %>° F
+
+	<div id="fiveDay">
+		<div class="days">
+			<h2>Today</h2>
+
+			<p><%= summaryDay0 %></p>
+			<p>high temp: <%= highDay0 %>° F</p>
+			<p>low temp: <%= lowDay0 %>° F</p>
+			<p>wind speed: <%= windsDay0 %>° F</p>
+		</div>
+
+		<div class="days">
+			<h2>Tomorrow</h2>
+
+			<p><%= summaryDay1 %></p>
+			<p>high temp: <%= highDay1 %>° F</p>
+			<p>low temp: <%= lowDay1 %>° F</p>
+			<p>wind speed: <%= windsDay1 %>° F</p>
+		</div>
+
+		<div class="days">
+			<h2>Day after tomorrow</h2>
+
+			<p><%= summaryDay2 %></p>
+			<p>high temp: <%= highDay2 %>° F</p>
+			<p>low temp: <%= lowDay2 %>° F</p>
+			<p>wind speed: <%= windsDay2 %>° F</p>
+		</div>
+
+		<div class="days">
+			<h2>Day after day after tomorrow</h2>
+
+			<p><%= summaryDay3 %></p>
+			<p>high temp: <%= highDay3 %>° F</p>
+			<p>low temp: <%= lowDay3 %>° F</p>
+			<p>wind speed: <%= windsDay3 %>° F</p>
+		</div>
+
+		<div class="days">
+			<h2>Day after that</h2>
+
+			<p><%= summaryDay4 %></p>
+			<p>high temp: <%= highDay4 %>° F</p>
+			<p>low temp: <%= lowDay4 %>° F</p>
+			<p>wind speed: <%= windsDay4 %>° F</p>
+		</div>
+	</div>
+
 
 
 	

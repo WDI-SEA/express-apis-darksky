@@ -45,24 +45,46 @@ app.post('/', function(req, res){
 			console.log("urlToCall=", urlToCall);
 
 			request(urlToCall, function (error, response, body) {
-				// console.log('error:', error); // Print the error if one occurred
-				// console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-				// console.log('body:', body); // Print the HTML for the weather page?
 				var result = JSON.parse(body);
 				var currentTemp = result.currently.temperature;
-				// var highTempDay1 = result.currently.daily.data.[0].temperatureHigh;
-				// var lowTempDay1 = result.currently.daily.data.[0].temperatureLow;
-
-
+				var highTemps = ['', '', '', '', ''];
+				var lowTemps = ['', '', '', '', ''];
+				var summaries = ['', '', '', '', ''];
+				var windSpeeds = ['', '', '', '', ''];
+				for (i=0; i<5; i++) {
+					highTemps[i] = result.daily.data[i].temperatureHigh;
+					lowTemps[i] = result.daily.data[i].temperatureLow;
+					summaries[i] = result.daily.data[i].summary
+					windSpeeds[i] = result.daily.data[i].windSpeed;
+				};
 				//console.log(jsonResults.data.children[0].data.url);
-				console.log("current temp=", result.currently.temperature);
+				console.log("current temp=", currentTemp);
+				//console.log("highTempDay1=", highTempDay1)
 				res.render('result', { x: x_coord, 
 					y: y_coord, 
 					query: req.body.userquery, 
-					temp: currentTemp
-					// ,
-					// highTempDay1: highTempDay1,
-					// lowTempDay1: lowTempDay1
+					currentTemp: currentTemp,
+					summaryDay0: summaries[0],
+					highDay0: highTemps[0],
+					lowDay0: lowTemps[0],
+					windsDay0: windSpeeds[0],
+					summaryDay1: summaries[1],
+					highDay1: highTemps[1],
+					lowDay1: lowTemps[1],
+					windsDay1: windSpeeds[1],
+					summaryDay2: summaries[2],
+					highDay2: highTemps[2],
+					lowDay2: lowTemps[2],
+					windsDay2: windSpeeds[2],
+					summaryDay3: summaries[3],
+					highDay3: highTemps[3],
+					lowDay3: lowTemps[3],
+					windsDay3: windSpeeds[3],
+					summaryDay4: summaries[4],
+					highDay4: highTemps[4],
+					lowDay4: lowTemps[4],
+					windsDay4: windSpeeds[4]
+			
 					 });
 			});
 
