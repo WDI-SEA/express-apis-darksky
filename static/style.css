@@ -30,3 +30,45 @@ h2 {
 .form-container {
   max-width: 800px;
 }
+
+.card-top, .card-middle, .card-bottom {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* .card-top {
+  align-items: flex-start;
+} */
+
+.icon-container {
+  width: 200px;
+  height: 150px;
+}
+
+.temp {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.temp-title {
+  font-size: 48px;
+}
+
+.alert-link {
+  display: block;
+  text-decoration: none;
+  color: red;
+  width: 200px;
+  height: 200px;
+}
+
+.detail-block {
+  display: inline-block;
+}

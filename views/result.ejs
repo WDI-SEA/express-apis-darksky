@@ -1,24 +1,64 @@
+<% const todaysData = data.daily.data[0]; %>
+<% const currentData = data.currently; %>
+<% const now = new Date(data.currently.time*1000) %>
+<% const alerts = data.alerts || [] %> 
+
+
+<% const fiveDays = data.daily.data.slice(0,5).map(day => { %>
+  <% return new Date(day.time * 1000); %> 
+<% }); %>
+
 <h3><%= query %></h3>
 <h6><%= data.latitude %>, 
 <%= data.longitude %> </h6>
-<% const now = new Date() %>
-<% now.setUTCMilliseconds(data.daily.data[1].time); %> 
+<h6><%= now.toDateString(); %> </h6>
+<h6><%= now.toLocaleTimeString(); %> </h6>
 
-<p> <%= now.getFullYear(); %> </p>
-
+<!--
+<% fiveDays.forEach(day => { %>
+  <p> <%= day.toDateString(); %> </p>
+<% }); %>
+-->
 
 <div class="row">
 <div class="col s12 m8 offset-m2">
-  <div class="card large white darken-1">
+  <div class="card med white darken-1">
     <div class="card-content black-text">
-      <div class="row">
-          <span class="card-title left"> <%= data.currently.icon %>   </span>
-          <span class="card-title right"> <%= data.currently.temperature %>   </span>
+
+      <div class="card-top">
+        <div class="icon-container">
+          <canvas class="weather-icon" id="main-icon" width="128" height="128"><span id="icon-text"><%= data.currently.icon %></span> </canvas>
+        </div>
+        <div class="temp">
+          <h4 class="temp-title"><%= currentData.temperature.toFixed(0) %>&deg;F</h4>
+          <h5><%= currentData.summary %></h5>
+        </div>
       </div>
-      <div class="row">
+
+      <div class="card-middle">
         <p> <%= data.daily.summary %>  </p>
       </div>
-      <div class="row">
+
+      <div class="card-bottom">
+      
+      <% if (!alerts.length > 0) { %>
+        <% alerts.forEach(alert => { %>
+          <a class="alert-link" href="<%= alert.uri %>">
+            <h6> <%= alert.title %> </h6>
+            <p> <%= alert.severity %> </p>
+            <p> <%= alert.description.slice(0,100) %>...(click for details)</p>
+          </a>
+        <% }); %>
+      <% } else { %>
+
+        <h6 class="detail-block">Precipitation: <%= currentData.precipProbability %>%</h6>
+        <h6 class="detail-block">Wind: <%= currentData.windSpeed %>mph </h6>
+        <h6 class="detail-block">Humidity: <%= Math.floor(currentData.humidity * 100) %>% </h6>
+        <h6 class="detail-block">UV: <%= currentData.uvIndex %> </h6>
+      <% } %> 
+      
+      <div>
+      </div>
       
       </div>
     
@@ -50,3 +90,7 @@
   <div id="day3">The Next Day</div>
 </div>
 </div>
+
+
+<script src="skycons.js"></script>
+<script src="results.js"></script>
