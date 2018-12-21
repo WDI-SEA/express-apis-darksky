@@ -24,6 +24,7 @@ h2 {
 
 .form-container {
   max-width: 800px;
+  margin: 10px auto;
 }
 
 .card-top, .card-middle, .card-bottom {
@@ -76,4 +77,8 @@ h2 {
 .day-slide {
   padding: 5px 0;
   height: 375px;
+}
+
+.container {
+  max-width: 800px;
 }
