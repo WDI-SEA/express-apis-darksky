@@ -7,13 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // you can add a canvas by it's ID...
   skycons.add('main-icon', iconText.textContent);
 
+  [...document.querySelectorAll(".small-icon")].forEach((elem) => {
+    skycons.add(elem, elem.getAttribute('data-icon'));
+  });
+
+
   // start animation!
   skycons.play();
-  console.log('icon stuff');
 
-  // want to change the icon? no problem:
-  // skycons.set("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
 
-  // want to remove one altogether? no problem:
-  // skycons.remove("icon2");
-})
+
+
+});

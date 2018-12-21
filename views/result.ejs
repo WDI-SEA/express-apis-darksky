@@ -2,27 +2,21 @@
 <% const currentData = data.currently; %>
 <% const now = new Date(data.currently.time*1000) %>
 <% const alerts = data.alerts || [] %> 
-
-
-<% const fiveDays = data.daily.data.slice(0,5).map(day => { %>
-  <% return new Date(day.time * 1000); %> 
+<% const daysList = ['Sun','Mon','Tues','Wed','Thurs','Fri','Sat']; %>
+<% const fourDays = data.daily.data.slice(1,5); %>
+<% fourDays.forEach(day => { %>
+  <% day.date = new Date(day.time * 1000); %> 
 <% }); %>
 
-<h3><%= query %></h3>
+<h4>"<%= query %>"</h4>
 <h6><%= data.latitude %>, 
 <%= data.longitude %> </h6>
-<h6><%= now.toDateString(); %> </h6>
-<h6><%= now.toLocaleTimeString(); %> </h6>
-
-<!--
-<% fiveDays.forEach(day => { %>
-  <p> <%= day.toDateString(); %> </p>
-<% }); %>
--->
+<h3><%= now.toLocaleDateString('en-US', { timeZone: data.timezone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); %> </h3>
+<h5><%= now.toLocaleTimeString('en-US', { timeZone: data.timezone }); %> </h5>
 
 <div class="row">
 <div class="col s12 m8 offset-m2">
-  <div class="card med white darken-1">
+  <div class="card white large darken-1">
     <div class="card-content black-text">
 
       <div class="card-top">
@@ -40,26 +34,21 @@
       </div>
 
       <div class="card-bottom">
-      
-      <% if (!alerts.length > 0) { %>
-        <% alerts.forEach(alert => { %>
-          <a class="alert-link" href="<%= alert.uri %>">
-            <h6> <%= alert.title %> </h6>
-            <p> <%= alert.severity %> </p>
-            <p> <%= alert.description.slice(0,100) %>...(click for details)</p>
-          </a>
-        <% }); %>
-      <% } else { %>
+        <% if (alerts.length > 0) { %>
+          <% alerts.forEach(alert => { %>
+            <a class="alert-link" href="<%= alert.uri %>">
+              <h6> <%= alert.title %> </h6>
+              <p> <%= alert.severity %> </p>
+              <p> <%= alert.description.slice(0,100) %>...(click for details)</p>
+            </a>
+          <% }); %>
+        <% } else { %>
 
-        <h6 class="detail-block">Precipitation: <%= currentData.precipProbability %>%</h6>
-        <h6 class="detail-block">Wind: <%= currentData.windSpeed %>mph </h6>
-        <h6 class="detail-block">Humidity: <%= Math.floor(currentData.humidity * 100) %>% </h6>
-        <h6 class="detail-block">UV: <%= currentData.uvIndex %> </h6>
-      <% } %> 
-      
-      <div>
-      </div>
-      
+          <h6 class="detail-block">Precipitation: <%= currentData.precipProbability %>%</h6>
+          <h6 class="detail-block">Wind: <%= currentData.windSpeed %>mph </h6>
+          <h6 class="detail-block">Humidity: <%= Math.floor(currentData.humidity * 100) %>% </h6>
+          <h6 class="detail-block">UV:<br><%= currentData.uvIndex %> </h6>
+        <% } %> 
       </div>
     
 
@@ -70,26 +59,25 @@
 
 
 
+<div class="slides">
 
+<div class="row">
+<% fourDays.forEach(day => { %>
+<div class="col s6 m3">
+  <div class="card-panel day-slide white">
+    <h5 class="black-text"> <%= daysList[day.date.getDay()]; %> </h5>
+    <canvas class="small-icon" data-icon="<%= day.icon %>" width="64" height="64"></canvas>
+    <h6 class="detail-block">High: <%= day.temperatureHigh.toFixed(0) %></h6>
+    <h6 class="detail-block">Low: <%= day.temperatureLow.toFixed(0) %></h6>
+    <h6 class="detail-block">Wind: <%= day.windSpeed.toFixed(0) %>mph </h6>
+    <p class="detail-block summary"><%= day.summary  %></p>
+    <p></p>
+  </div>
+</div>
+<% }); %>
+</div>
+</div>
 
-
-<div class="card">
-<div class="card-content">
-  <p> <%= data.daily.summary %>  </p>
-</div>
-<div class="card-tabs">
-  <ul class="tabs tabs-fixed-width">
-    <li class="tab"><a class="active" href="#day1">Today</a></li>
-    <li class="tab"><a href="#day2">Tomorrow</a></li>
-    <li class="tab"><a href="#day3">The Next Day</a></li>
-  </ul>
-</div>
-<div class="card-content grey lighten-4">
-  <div id="day1">Today</div>
-  <div id="day2">Tomorrow</div>
-  <div id="day3">The Next Day</div>
-</div>
-</div>
 
 
 <script src="skycons.js"></script>

@@ -21,11 +21,6 @@ h2 {
   width: 100%;
   height: auto;
 }
-/* 
-.hide {
-  visibility: hidden;
-  display: none;
-} */
 
 .form-container {
   max-width: 800px;
@@ -39,9 +34,6 @@ h2 {
   margin-top: 10px;
 }
 
-/* .card-top {
-  align-items: flex-start;
-} */
 
 .icon-container {
   width: 200px;
@@ -71,4 +63,17 @@ h2 {
 
 .detail-block {
   display: inline-block;
+  width: 115px;
+}
+
+.slides {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-slide {
+  padding: 5px 0;
+  height: 375px;
 }
