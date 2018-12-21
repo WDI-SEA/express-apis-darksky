@@ -3,14 +3,28 @@
 <head>
 	<title>How's the Weather</title>
 </head>
-<body>
-	<div id="resultBox">
-		<h3 class="results">Current Weather</h3>
-		<h3 class="results">Temperature:  <span id="rs1"><%= currentTemp %>&deg;<span></h3>
-		<h3 class="results">Humity:  <span id="rs2"><%= humidity %><span></h3>
-		<h3 class="results">Wind Speed:  <span id="rs3"><%= windSpeed %><span></h3>
-		<h3 class="results" id="summary"><%= summary %></h3> 
+<body id="resultContainer">
+	<div id="box1">
+		<div class="results" id="reusultsTitle1">CURRENTLY</div>
+		<div class="results">Temperature:  <span id="rc1"><%= Math.round(ctemperature) %>&deg;<span></div>
+		<div class="results">Humity:  <span id="rc2"><%= chumidity %><span></div>
+		<div class="results">Wind Speed:  <span id="rc3"><%= cwindSpeed %><span></div>
+			<div id="summary1"><%= csummary %></div> 
 	</div>
-</body>
+<!-- 	<div id="box2">
+		
+	</div> -->
+	<div id="box3">
+		<div class="results" id="reusultsTitl2">DAILY</div>
+		<div class="results">High Temperature:  <span id="rd1"><%= Math.round(temperatureHigh) %>&deg;<span></div>
+		<div class="results">Low Temperature:  <span id="rd2"><%= Math.round(temperatureLow) %>&deg;<span></div>
+		<div class="results">Humity:  <span id="rd3"><%= dhumidity %><span></div>
+		<div class="results">Wind Speed:  <span id="rd4"><%= dwindSpeed %><span></div>
+			<div id="summary2"><%= dsummary %></div> 
+	</div>
+<!-- 		<div id="box4">
+		
+	</div>
+ --></body>
 </html>
 

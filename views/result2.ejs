@@ -1,15 +1,20 @@
-<div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="/current">Currently</a></li>
-        <li class="tab col s3"><a href="/hourly">Hourly</a></li>
-        <li class="tab col s3"><a href="/daily">Daily</a></li>
-        <li class="tab col s3"><a href="/about">Test 4</a></li>
-      </ul>
-    </div>
-    <div id="current" class="col s12">Currently</div>
-    <div id="hourly" class="col s12">Hourly</div>
-    <div id="daily" class="col s12">Daily</div>
-    <div id="about" class="col s12">About App</div>
-  </div>
 
+<div class="card border-dark mb-3" style="max-width: 25rem;">
+  <div class="card-header">CURRENTLY</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title"><%= Math.round(ctemperature) %>&deg;</h5>
+    <p class="card-text">Wind Speed:  <span id="rc3"><%= cwindSpeed %><span></p>
+      <p class="card-text">Humity:  <span id="rc2"><%= chumidity %><span></p>
+      <p class="card-text" id="summary1"><%= csummary %><span></p>
+  </div>
+</div>
+
+<div class="card border-dark mb-3" style="max-width: 25rem;">
+  <div class="card-header">DAILY</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Low Temperature:  <span id="rd2"><%= Math.round(temperatureLow) %>&deg;<span></h5>
+    <h5 class="card-title">High Temperature:  <span id="rd1"><%= Math.round(temperatureHigh) %>&deg;<span></h5>
+    <p class="card-text">Humity:  <span id="rd3"><%= dhumidity %><span></p>
+    <p class="card-text">Wind Speed:  <span id="rd4"><%= dwindSpeed %><span></p>
+    <p class="card-text" id="summary1"><%= dsummary %><span></p>
+  </div>

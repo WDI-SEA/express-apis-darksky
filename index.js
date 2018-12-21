@@ -36,15 +36,22 @@ app.post('/', function(req, res){
 				} else {
 					// Parse the data 
 					var result = JSON.parse(body);
-					currentTemp = result.currently.temperature;
-					humidity = result.currently.humidity;
-					windSpeed = result.currently.windSpeed;
-					summary = result.currently.summary;
+					ctemperature = result.currently.temperature;
+					chumidity = result.currently.humidity;
+					cwindSpeed = result.currently.windSpeed;
+					csummary = result.currently.summary;
+
+					temperatureHigh = result.daily.data[0].temperatureHigh;
+					temperatureLow = result.daily.data[0].temperatureLow;
+					dhumidity = result.daily.data[0].humidity;
+					dwindSpeed = result.daily.data[0].windSpeed;
+					dsummary = result.daily.summary;
 					// console.log(currentTemp);
 
 					// Look at the data
 					// console.log(result); 
-					res.render('result', { currentTemp: currentTemp, humidity: humidity, windSpeed: windSpeed, summary: summary  });
+					res.render('result2', { ctemperature: ctemperature, chumidity: chumidity, cwindSpeed: cwindSpeed, csummary: csummary, 
+						temperatureHigh: temperatureHigh, temperatureLow: temperatureLow, dhumidity: dhumidity, dwindSpeed: dwindSpeed, dsummary: dsummary  });
 					}
 				});
 		} else {
