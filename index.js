@@ -2,6 +2,10 @@
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+var geocoder = require('simple-geocoder');
+var request = require('request');
+
+require('dotenv').config();
 
 // Declare your app
 var app = express();
@@ -20,10 +24,26 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  res.render('result');
+	geocoder.geocode(req.body.cityName, function(success, locations) {
+		if(success) {
+				var urlToCall = process.env.DARK_SKY_BASE_URL + process.env.DARKSKY_API_KEY + locations.y.toFixed(4) + ',' + locations.x.toFixed(4);
+				request(urlToCall, function(error, response, body) {
+				    // Parse the data 
+				    console.log(urlToCall);
+				    var result = JSON.parse(body).currently;
+				    var latLong = JSON.parse(body);
+
+				    // Look at the data
+				    console.log(latLong); 
+
+				    // TODO: Do something with that data!
+				   	res.render('result', { results: result, coordinates: latLong, query: req.body.cityName });
+				});
+		}
+	});
 });
 
-// Listen on PORT 3000
-app.listen(3000, function(){
-  console.log('I\'m listening to the smooth sounds of port 3000 in the morning. ☕');
+// Listen on PORT 8000
+app.listen(8000, function(){
+  console.log('I\'m listening to the smooth sounds of port 8000 in the morning. ☕');
 });
