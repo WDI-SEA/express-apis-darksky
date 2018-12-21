@@ -15,3 +15,18 @@ h1 {
 h2 {
   font-size: 20px;
 }
+
+
+.loading {
+  width: 100%;
+  height: auto;
+}
+/* 
+.hide {
+  visibility: hidden;
+  display: none;
+} */
+
+.form-container {
+  max-width: 800px;
+}

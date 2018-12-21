@@ -1,1 +1,30 @@
-<h2>Home Page</h2>
+<div class="form-container">
+<form method="POST" action="/">
+  <div>
+    <label for="userquery">Location:</label>
+    <input type="text" name="userquery" id="userquery">
+  </div>
+
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
+</div>
+
+
+<!-- LOADING SPINNER -->
+<div class="loading hide">
+<div class="preloader-wrapper big active">
+  <div class="spinner-layer spinner-blue-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="loading.js"></script>
