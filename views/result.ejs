@@ -8,7 +8,7 @@
   <% day.date = new Date(day.time * 1000); %> 
 <% }); %>
 
-<h4>"<%= query %>"</h4>
+<h4><%= data.locationString %></h4>
 <h6><%= data.latitude %>, 
 <%= data.longitude %> </h6>
 <h3><%= now.toLocaleDateString('en-US', { timeZone: data.timezone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); %> </h3>

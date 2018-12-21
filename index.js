@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-
+// Renders results page
 app.post('/', getWeatherData);
 
 
@@ -43,6 +43,7 @@ function getWeatherData(req, res) {
   async.series([
     // Get lat,long from geocode
     callback => {
+      console.log('Start geolocate');
       geocoder.geocode(`${req.body.userquery}`, function (success, locations) {
         if (success) {
           lat_long.lat = locations.y.toFixed(4);
@@ -54,6 +55,20 @@ function getWeatherData(req, res) {
         }
 
       })
+    },
+
+    // Find nicely formatted string if it takes less than 2 seconds
+    callback => {
+      const timeoutLookup = async.timeout(getLocationString, 2000);
+      console.log('Start timeout');
+      timeoutLookup(lat_long, (err, data) => {
+        if (err) {
+          // If an issue or timeout then just print the user's query
+          callback(null, `"${req.body.userquery}"`);
+        } else {
+          callback(null, data);
+        }
+      });
     },
 
     // Get weather data from DarkSky
@@ -75,12 +90,34 @@ function getWeatherData(req, res) {
   // After we have the data. Render the page
   (err, results) => {
     if (err) {
-      console.log(err.error);
+      console.log(err.error)
       // Need to add a try again message
       res.redirect('/');
     } else {
-      res.render('result', { query: req.body.userquery, data: results.pop() });
+      const data = results.pop();
+      data.locationString = results.pop();
+      res.render('result', { query: req.body.userquery, data: data });
     }
   });
 
 }
+
+
+// Reverse geocoder to get nice string of location
+// getLocationString {}, f(err, data) => f(err, data)
+function getLocationString (lat_long, callback) {
+  // Get nicely formatted string for location
+  geocoder.reverse(`${lat_long.lat},${lat_long.long}`, function (success, result) {
+    if (success) {
+      console.log("Location: ", result.Address, result.City, result.Region, result.Postal, result.CountryCode);
+      if(result.City) {
+        return callback(null, `${result.City}, ${result.Region}, ${result.CountryCode}`);
+      } else {
+        return callback(null, `${result.Region}, ${result.CountryCode}`);
+      }
+    } else {
+      return callback(null, `"${req.body.userquery}"`);
+    }
+  });
+}
+
