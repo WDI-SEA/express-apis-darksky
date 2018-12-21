@@ -49,7 +49,7 @@ app.post('/', function(req, res){
 				});
 
 		}
-		res.send('error');
+		// res.send('error');
 	});
 });
 
