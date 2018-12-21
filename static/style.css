@@ -15,3 +15,12 @@ h1 {
 h2 {
   font-size: 20px;
 }
+
+.card {
+	width: 250px;
+	height: 400px;
+}
+
+.card {
+	display: inline-flex;
+}

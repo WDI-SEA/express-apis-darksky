@@ -25,20 +25,24 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
 	geocoder.geocode(req.body.cityName, function(success, locations) {
-		if(success) {
-				var urlToCall = process.env.DARK_SKY_BASE_URL + process.env.DARKSKY_API_KEY + locations.y.toFixed(4) + ',' + locations.x.toFixed(4);
-				request(urlToCall, function(error, response, body) {
-				    // Parse the data 
-				    console.log(urlToCall);
-				    var result = JSON.parse(body).currently;
-				    var latLong = JSON.parse(body);
+		if(req.body.cityName === ''){
+			res.render('home');
+		}
+		else if(success) {
+			var urlToCall = process.env.DARK_SKY_BASE_URL + process.env.DARKSKY_API_KEY + locations.y.toFixed(4) + ',' + locations.x.toFixed(4);
+			request(urlToCall, function(error, response, body) {
+			    // Parse the data 
+			    var i = 0;
+			    var result = JSON.parse(body).currently;
+			    var latLong = JSON.parse(body);
+			    var fiveDay = JSON.parse(body).daily.data;
 
-				    // Look at the data
-				    console.log(latLong); 
+			    // Look at the data
+			    console.log(fiveDay[i].time); 
 
-				    // TODO: Do something with that data!
-				   	res.render('result', { results: result, coordinates: latLong, query: req.body.cityName });
-				});
+			    // TODO: Do something with that data!
+			   	res.render('result', { results: result, coordinates: latLong, query: req.body.cityName, forecast: fiveDay });
+			});
 		}
 	});
 });
