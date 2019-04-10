@@ -2,6 +2,7 @@
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+var geocoder = require('simple-geocoder')
 
 // Declare your app
 var app = express();
@@ -19,8 +20,14 @@ app.get('/', function(req, res){
   res.render('home');
 });
 
-app.post('/', function(req, res){
+app.post('/results', function(req, res){
   res.render('result');
+  console.log(req.body);
+  geocoder.geocode(req.body.location, function(success, locations) {
+	if(success) {
+		console.log("Location: ", locations.x, locations.y);
+	} else{ console.log('failed')}
+	});
 });
 
 // Listen on PORT 3000
