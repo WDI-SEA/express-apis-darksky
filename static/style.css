@@ -15,3 +15,17 @@ h1 {
 h2 {
   font-size: 20px;
 }
+.flexholder {
+  justify-content: center;
+}
+
+.forecastholder {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.forecasttile {
+  margin: 0 2vw;
+  width: 400px;
+}

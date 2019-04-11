@@ -1,1 +1,28 @@
 <h2>Results Page</h2>
+
+<h3>Weather for <%= searchLoc %></h3>
+<h6>Latitude: <%= latitude %></h6>
+<h6>Longitude: <%= longitude %></h6>
+<h5>Current temp: <%= temp %>&deg;F</h5>
+
+<div class="forecastholder">
+  <% result.daily.data.forEach((m, i) => { %>
+    <div class="forecasttile">
+      <div>
+        <h5><%= days[i] %></h5>
+      </div>
+      <div>
+        <%= hTemp[i] %>
+      </div>
+      <div>
+        <%= lTemp[i] %>
+      </div>
+      <div>
+        <%= windS[i] %>
+      </div>
+      <div>
+        <%= summary[i] %>
+      </div>
+    </div>
+    <% }); %>
+</div>
