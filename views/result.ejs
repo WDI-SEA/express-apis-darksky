@@ -1,1 +1,23 @@
-<h2>Results Page</h2>
+
+<a href="/">&larr; Back</a>
+<h3> <span class="searchName"><%= location %></span></h3>
+<p>Currently the temperature is: <%= Math.floor(results.currently.temperature) %>&#xb0;</p>
+
+<div id="daily-container">
+	
+	<% for (var i=0; i<5; i++){ %>
+	<!-- print out each item -->
+	
+	<div class="daily-card">
+		<div>
+			<h6><%=  moment(results.daily.data[i].time, 'X').format('dddd') %></h6>
+			<img class="icon" src="../icons/cloud-<%= daily[i].icon %>.svg">
+		</div>
+			<h5><span class="high"><%= Math.floor(daily[i].temperatureHigh) %>&#xb0;</span> / <span class="low"><%= Math.floor(daily[i].temperatureLow) %>&#xb0;</span></h5>
+
+			<h6>Wind: <%= Math.floor(daily[i].windSpeed) %>mph</h6>
+			<hr />
+			<p><%= daily[i].summary %></p>
+	</div>
+	<% } %>
+</div>
