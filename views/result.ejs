@@ -1,1 +1,27 @@
-<h2>Results Page</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <div>
+        <h1>Your results...</h1>
+        <h2>You searched for <em><%= location %></em></h2>
+
+        <% results.forEach(function() { %>
+        <div>
+        <h3><%= locations.x %> (<%= locations.y %>)</h3>
+
+        <h3><%= currently.time %></h3>
+        <h3><%= currently.temperature %></h3>
+        <img src="<%= currently.icon %>">
+
+        <h3><%= currently.time %></h3>
+        <h3><%= daily %></h3>
+        <img src="<%= daily.icon %>">
+        <hr>
+        </div>
+        <% }) %>
+    </div>  
+</body>
+</html>
