@@ -1,1 +1,22 @@
 <h2>Results Page</h2>
+
+<h2>Your city is <%= city %> with the next coordinates</h2>
+<h2>x: <%= locationx %> y: <%= locationy %></h2>
+<div class="today">
+<h2>It is currently  <%=  temp %> F</h2>
+<div> <h2>Summary : <%= todaySum %></h2></div>
+</div>
+<hr>
+
+<% daily.forEach(function(day){ %>
+       <div>
+         <h3><%= day.date %></h3>
+         <h3>High Temperature : <%= day.temperatureMax %> </h3>
+         <h3>Low Temperature : <%= day.temperatureMin %> </h3>
+          <h3>Summary :<%= day.summary %> </h3>
+          <h3>Wind speed : <%= day.windSpeed %> </h3>
+         <hr>
+       </div>
+    <% })%>
+
+<a href="/"> &larr; Back</a>
