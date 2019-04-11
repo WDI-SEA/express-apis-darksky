@@ -1,5 +1,22 @@
+@font-face {
+	font-family: "Weather Icons";
+	src: url("./weathericons-regular-webfont.ttf");
+}
+
+
+.day {
+	background-color: lavender;
+	display: inline-block;
+	padding: 5px;
+}
+
 nav {
   background-color: #888;
+}
+
+span {
+	font-size: 80px;
+	font-family: "Weather Icons"
 }
 
 nav img {

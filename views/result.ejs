@@ -1,1 +1,18 @@
-<h2>Results Page</h2>
+<div>
+	<h1>It is currently <%=results.currently.temperature%> degrees in <%=location%></h1>		
+</div>
+<div>
+	<h2>7 Day Forecast:</h2>
+	<h5><%=results.daily.summary%></h5>
+	<div>
+		<%results.daily.data.forEach((t, i) => { %>
+			<div class="day">
+				<h6><%=days[i]%></h6>
+				<span><i class="wi wi-forecast-io-<%=t.icon%>"></i></span>
+				<p>High: <%=t.temperatureHigh%></p>
+				<p>Low: <%=t.temperatureLow%></p>	
+				<p>Wind: <%=t.windSpeed%> MPH</p>	
+			</div>
+		<%})%>	
+	</div>
+</div>
