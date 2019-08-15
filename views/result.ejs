@@ -10,51 +10,53 @@
     <div class="col s2 card medium hoverable z-depth-2">
           <% switch (currently.icon) {
               case "clear-day": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "clear-night": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "rain": %>
-                <img src="/icons/Cloud-Rain.svg">
+                <img src="/icons/Cloud-Rain.svg" class="activator">
                 <% break; %>
           <%  case "snow": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "sleet": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "wind": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "fog": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "cloudy": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "partly-cloudy-day": %>
-                <img src="/icons/Cloud-Sun.svg">
+                <img src="/icons/Cloud-Sun.svg" class="activator">
                 <% break; %>
           <%  case "partly-cloudyt-night": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "hail": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "thunderstorm": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "tornado": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  default: %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>   
           <% } %>        
       <div class="card-content">
-        <span class="card-title"><%= Math.round(currently.temperature) %></span>
-        <p><%= currently.summary %></p>  
+        <span class="card-title activator grey-text text-darken-4"><%= Math.round(currently.temperature) %><i class="material-icons right">more_vert</i></span>
+</div>
+<div class="card-reveal">
+<p><%= currently.summary %></p>  
         <p><%= Math.round(currently.windSpeed / 1.609) %> MPH / <%= currently.windBearing %>&#176;</p>
         <h6>NOW</h6>
       </div> 
@@ -65,52 +67,52 @@
         <div class="card-image waves-effect waves-block waves-light">
           <% switch (forecast.data[i].icon) {
               case "clear-day": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "clear-night": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "rain": %>
-                <img src="/icons/Cloud-Rain.svg">
+                <img src="/icons/Cloud-Rain.svg" class="activator">
                 <% break; %>
           <%  case "snow": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "sleet": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "wind": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "fog": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "cloudy": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "partly-cloudy-day": %>
-                <img src="/icons/Cloud-Sun.svg">
+                <img src="/icons/Cloud-Sun.svg" class="activator">
                 <% break; %>
           <%  case "partly-cloudyt-night": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "hail": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "thunderstorm": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  case "tornado": %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>
           <%  default: %>
-                <img src="/icons/Cloud.svg">
+                <img src="/icons/Cloud.svg" class="activator">
                 <% break; %>   
           <% } %>
        </div>
 
      <div class="card-content">
-          <span class="card-title"><%= Math.round(forecast.data[i].temperatureMin) %> / <%= Math.round(forecast.data[i].temperatureMax) %></span>
+          <span class="card-title activator grey-text text-darken-4"><%= Math.round(forecast.data[i].temperatureMin) %> / <%= Math.round(forecast.data[i].temperatureMax) %></span>
 
           <p><%= forecast.data[i].summary %></p>
           <p><%= Math.round(forecast.data[i].windSpeed / 1.609) %> MPH / <%= forecast.data[i].windBearing %>&#176;</p>
