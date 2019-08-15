@@ -33,7 +33,7 @@ app.post('/', function (req, res) {
     if (success) {
       // console.log("Location: ", locations.x, locations.y);
       let getRequest = process.env.DARK_SKY_BASE_URL + locations.y + ',' + locations.x;
-      // console.log(`URL to Call is: ${getRequest}`);
+      console.log(`URL to Call is: ${getRequest}`);
 
       restRequest(getRequest, (err, response, body) => {
         if (err || response.statusCode != 200) {
@@ -46,7 +46,8 @@ app.post('/', function (req, res) {
             location: location,
             x: locations.x,
             y: locations.y,
-            currentTemperature: data.currently.temperature
+            currently: data.currently,
+            forecast: data.daily
           });
         }
       })

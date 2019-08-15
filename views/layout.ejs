@@ -3,30 +3,32 @@
 <head>
   <title>How's the Weather</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo right">
-        <img src="https://res.cloudinary.com/briezh/image/upload/v1545283087/cloud_wind-512_hceabd.png">
-      </a>
-      <ul class="left">
-        <li><a href="/">Home</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container">
-    <h1 class="header center">How's the Weather Out There?</h1>
-    <div class="row">
-      <div class="col-12 center">
-        <%- body %>
-      </div>
-    </div>
-  </div>
-<footer>
-<a href="https://darksky.net/poweredby/">Powered by DarkSky</a>
-</footer>
+  <header>
+    <nav class="nav-wrapper">
+        <a href="/" class="brand-logo right">
+          <img src="https://res.cloudinary.com/briezh/image/upload/v1545283087/cloud_wind-512_hceabd.png">
+        </a>
+      
+        <ul class="left hide-on-med-and-down">
+          <li><a href="/">Reset</a></li>
+        </ul>
+    <nav>
+  </header>
+
+  <main class="container">
+      <%# <div class="row"> %>
+          <%- body %>
+      <%# </div> %>
+  </main>
+
+  <footer class="page-footer">
+    <a class="grey-text text-lighten-4 right" href="https://darksky.net/poweredby/">Powered by DarkSky</a>
+  </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
 </html>

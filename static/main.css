@@ -1,0 +1,25 @@
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.brand-logo img {
+  max-height: 55px;
+}
+
+.coordinates {
+  font-size: 10px;
+}
+
+.page-footer a {
+  color: white;
+}
+
+
