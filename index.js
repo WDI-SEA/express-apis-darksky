@@ -22,7 +22,6 @@ app.use(parser.urlencoded({
 
 // Declare routes
 app.get('/', function (req, res) {
-
   res.render('home');
 });
 
@@ -38,6 +37,7 @@ app.post('/', function (req, res) {
       restRequest(getRequest, (err, response, body) => {
         if (err || response.statusCode != 200) {
           console.log(`An error occured in GET request to DarkSky`);
+          res.render('500');
         }
         else {
           // console.log(JSON.parse(body));
@@ -51,12 +51,16 @@ app.post('/', function (req, res) {
           });
         }
       })
-
-
     }
   });
 
 });
+
+app.get('*', function (req, res) {
+  res.render('404');
+});
+
+
 
 // Listen on PORT 3000
 app.listen(3000, function () {
