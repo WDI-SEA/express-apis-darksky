@@ -1,15 +1,32 @@
 <div class="">
   <h2>It is currently <%= results.currently.temperature %> in <%=local%></h2>
+  <h2>High: <%= results.daily.data[2].temperatureHigh %> <%=local%></h2>
+  <h2>Low: <%= results.daily.data[2].temperatureLow %> <%=local%></h2>
+  <h2>Summary: <%= results.daily.data[2].summary %> <%=local%></h2>
+
 </div>
 <div class="">
-  <h2>Tomorrow: <%= results.daily.data[1].temperatureHigh %> <%=local%></h2>
+  <h2>High Tomorrow: <%= results.daily.data[1].temperatureHigh %> <%=local%></h2>
+  <h2>Low Tomorrow: <%= results.daily.data[1].temperatureLow %> <%=local%></h2>
+  <h2>Summary: <%= results.daily.data[1].summary %> <%=local%></h2>
+
 </div>
 <div class="">
-  <h2> <%= results.daily.data[2].temperatureHigh %> in <%=local%></h2>
+  <h2>High<%= results.daily.data[2].temperatureHigh %> in <%=local%></h2>
+  <h2>Low: <%= results.daily.data[2].temperatureLow %> <%=local%></h2>
+  <h2>Summary: <%= results.daily.data[2].summary %> <%=local%></h2>
+
 </div>
 <div class="">
-  <h2> <%= results.daily.data[3].temperatureHigh %> in <%=local%></h2>
+  <h2>High: <%= results.daily.data[3].temperatureHigh %> in <%=local%></h2>
+  <h2>Low: <%= results.daily.data[3].temperatureLow %> <%=local%></h2>
+  <h2>Summary: <%= results.daily.data[3].summary %> <%=local%></h2>
+
+
 </div>
 <div class="">
-  <h2> <%= results.daily.data[4].temperatureHigh %> in <%=local%></h2>
+  <h2>High <%= results.daily.data[4].temperatureHigh %> in <%=local%></h2>
+  <h2>Low: <%= results.daily.data[4].temperatureLow %> <%=local%></h2>
+  <h2>Summary: <%= results.daily.data[4].summary %> <%=local%></h2>
+
 </div>
