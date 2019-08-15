@@ -15,3 +15,13 @@ h1 {
 h2 {
   font-size: 20px;
 }
+
+.temperature {
+	margin: 0 0 0 50%;
+	font-size: 36px;
+	text-align: right
+}
+
+.five-day {
+	float:left;
+}

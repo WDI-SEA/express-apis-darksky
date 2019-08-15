@@ -1,1 +1,17 @@
 <h2>Results Page</h2>
+<div class="current">
+<h3><%=name%><span class="temperature"><%=temperature.toFixed(0)%>°</span></h3>
+<p>Latitude: <%=locations.y.toFixed(2)%>, Longitude: <%=locations.x.toFixed(2)%></p>
+<p><%=summary%></p>
+</div>
+<div class="five-day">
+	<% for (var i = 0; i < 5; i++) { %>
+		<div id="<%=i%>" class="five-day">
+			<p><%=fiveday[i].day%></p>	
+			<p><%=fiveday[i].tempHigh%></p>	
+			<p><%=fiveday[i].tempLow%></p>	
+			<p><%=fiveday[i].icon%></p>	
+		</div>
+	<% } %>
+
+</div>
