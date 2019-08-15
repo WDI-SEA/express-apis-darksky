@@ -4,29 +4,29 @@ In this lab, we're going to combo use an API to get the weather. First, we'll ha
 
 ## Getting started
 
-#### 1. FORK IT! CLONE IT!
+~~#### 1. FORK IT! CLONE IT!~~
 
 You won't need to turn in this assignment, but you should fork and clone this repository for its starter code.
 
-#### 2. Run `npm install`. 
+~~#### 2. Run `npm install`. ~~
 
 This will install the dependecies you need to run an Express app from the `package.json` file.
 
-#### 3. Create a file called `.env` at the root level. 
+~~#### 3. Create a file called `.env` at the root level. ~~
 
 You can do this by running the command `touch .env`.
 
-#### 4. Take a peek at the starter code
+~~#### 4. Take a peek at the starter code~~
 
 You've got a basic Node/Express app going on here. Take a look at it and get familiar with what it does. Make sure you can run the server and get to the home page.
 
 ## Your Starter Code
 
-#### Views and EJS Layouts
+~~#### Views and EJS Layouts~~
 
 Your layout is already set up and includes a reference to [Material CSS](https://materializecss.com/) by Google. It already has a basic navbar and two ejs files, but the rest is up to you! 
 
-#### Routes
+~~#### Routes~~
 
 You've got two routes set up. One is a get route that is rendering your home page and the other is a post route that will eventually display the weather results that your user is searching for.
 
@@ -35,7 +35,7 @@ You've got two routes set up. One is a get route that is rendering your home pag
 | GET | / | Show form where user can enter a location |
 | POST | / | Take users search, get results, and display them |
 
-#### Static Folder and CSS
+~~#### Static Folder and CSS~~
 
 You've got a static folder you can put static files into. There is already a `style.css` file for custom styles. What folder is your static folder is decided by the following line in `index.js`:
 
@@ -47,13 +47,13 @@ However, in this case, `static` is just the name of the folder. It could be anyt
 
 ## Your Job!
 
-#### 1. Create a form on the home page for the user to enter a location
+~~#### 1. Create a form on the home page for the user to enter a location~~
 
 This will include a text input, and a submit button. You're going to use this to submit the location the user enters to your backend post route. 
 
 > Make sure you have the method listed as "POST" on your form tag.
 
-#### 2. Test your form!
+~~#### 2. Test your form!~~
 
 If your form is hooked up right, two things should be happening. First, you should be getting to the post route in your `index.js` file. You can tell this is happening if you're rendering the `results.ejs` view. Second, you should be getting the location from your form to the backend route. To test this, add the following line of code to the post route:
 
@@ -67,23 +67,23 @@ REPEAT, console.logs from your backend will print on your terminal, NOT your bro
 
 > Not seeing anything? Does your input HTML element have a "name" property?
 
-#### 3. Install the Geocoder node module from npm
+~~#### 3. Install the Geocoder node module from npm~~
 
 `npm install simple-geocoder`
 
-#### 4. Require Geocoder in index.js
+~~#### 4. Require Geocoder in index.js~~
 
 This is the package we're going to use to figure out latitude-longitude coordinates for the location or address the user typed. Check out the [documentation for simple-geocoder](https://www.npmjs.com/package/simple-geocoder).
 
 All we really need from geocoder is the `geocode()` function. We'll feed it the data that the user entered and (hopefully) get back some coordinates!
 
-#### 5. Test Geocoder!
+~~#### 5. Test Geocoder!~~
 
 Feed the geocoder.geocode function the data that your user types. In the callback function, print out `locations` by putting it into a `console.log`. You should see that the locations object has a `x` and a `y` property.
 
 In this case, your user is you! Type in `Seattle, WA` as your test user input address. The expected coordinates are `47.608013,-122.335167`. Do you see them in `locations`?
 
-#### 6. Show off your lat-long!
+~~#### 6. Show off your lat-long!~~
 
 In your `res.render('results')` call, send on the location and coordinate data via a second argument. Display this on the `results.ejs` page.
 
@@ -100,15 +100,15 @@ Seattle
 
 > It might print out a whole lot of decimals... feel free to round off as appropriate for display purposes.
 
-#### 7. Install the Requests node module from npm
+~~#### 7. Install the Requests node module from npm~~
 
 `npm install request`
 
-#### 8. Sign up for an API Key on [DarkSky.net](https://darksky.net/dev/account)
+~~#### 8. Sign up for an API Key on [DarkSky.net](https://darksky.net/dev/account)~~
 
 It's free! 
 
-#### 9. Look at the [DarkSky Example](https://darksky.net/dev/account) 
+~~#### 9. Look at the [DarkSky Example](https://darksky.net/dev/account)~~ 
 
 DarkSky wants your request url in this format (using Seattle as our example):
 
@@ -116,13 +116,13 @@ https://api.darksky.net/forecast/YOURAPIKEY/47.608013,-122.335167
 
 You visit this link and get the data... but it's kind of a mess!
 
-#### 10. Install [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) Chrome Plugin
+~~#### 10. Install [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) Chrome Plugin~~
 
 This will help you view JSON data in your browser in a much more efficient way. A Chrome plugin like JSONView can really, really help make large amounts of JSON data less of a headache. You may have to enable it in your settings, but after that you should be good to start viewing all the JSON data you can handle.
 
 Look at the DarkSky forecast data for Seattle. What is the current temperature? How deep in the results object is this located?
 
-#### 11. Set up your `.env` file
+~~#### 11. Set up your `.env` file~~
 
 Create a `.env` file at the top-level if you haven't already. Add your base url from DarkSky (the one that includes your API key). It might look something like this:
 
@@ -130,7 +130,7 @@ Create a `.env` file at the top-level if you haven't already. Add your base url 
 DARK_SKY_BASE_URL='https://api.darksky.net/forecast/abc123notmyrealapikey/'
 ```
 
-#### 12. Install dotenv from NPM
+~~#### 12. Install dotenv from NPM~~
 
 `npm install dotenv`
 
@@ -140,7 +140,7 @@ This will read the `.env` file for you and make those variables available that w
 var urlToCall = process.env.DARK_SKY_BASE_URL + lat + ',' + lng;
 ```
 
-#### 13. Use the Request module to make the call to DarkSky
+~~#### 13. Use the Request module to make the call to DarkSky~~
 
 Take that URL you used for DarkSky and use it in the request call. If you don't remember how to do this, refer to the class notes, or just look at the example on [Request's NPM page](https://www.npmjs.com/package/request).
 
@@ -148,7 +148,7 @@ Take that URL you used for DarkSky and use it in the request call. If you don't 
 
 > Make sure that the request call is INSIDE the geocoder.geocode callback! Don't let asynchronous calls ruin your day!
 
-#### 14. Parse that JSON!
+~~#### 14. Parse that JSON!~~
 
 Use the built in function `JSON.parse()` to parse the result data that returns from DarkSky.
 
@@ -164,7 +164,7 @@ request(yourUrl, function(error, response, body) {
 });
 ```
 
-#### 15. Display the current temperature in Fahrenheit on results.ejs
+~~#### 15. Display the current temperature in Fahrenheit on results.ejs~~
 
 It's up to you how you want to stylize this part! At minimum you should be passing the current temperature into the results page and displaying something along thee lines of "It is currently 54.2F in Seattle."
 
