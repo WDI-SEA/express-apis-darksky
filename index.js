@@ -35,18 +35,14 @@ app.post('/location', function(req, res){
 				var data = JSON.parse(body);
 				//console.log(data.daily.data[0]);
 				var fiveDay = [];
-				var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 				for (day of data.daily.data) {
 					var obj = {};
-					var d = new Date(day.time);
-					obj.day = days[d.getDay()];
-					console.log(obj.day);
+					obj.day = moment(day.time*1000).format("dddd");
 					obj.icon = getIcon(day.icon);
 					obj.tempHigh = day.temperatureHigh.toFixed(0);
 					obj.tempLow = day.temperatureLow.toFixed(0);
 					fiveDay.push(obj);
 				}
-
 
 				res.render('result', {
 					name: req.body.location,
@@ -55,10 +51,7 @@ app.post('/location', function(req, res){
 			 		summary: data.daily.summary,
 			 		fiveday: fiveDay
 			 	});
-
-
 			});
-
 		} 		
  	});
 });
@@ -74,6 +67,7 @@ function getIcon(iconStr) {
 			return "\u2600";
 			break;
 		case "partly-cloudy-day":
+		case "cloudy":
 			return "\u2601";
 			break;
 		default:

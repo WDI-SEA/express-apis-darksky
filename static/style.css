@@ -16,12 +16,69 @@ h2 {
   font-size: 20px;
 }
 
+.current {
+	background-color: skyblue;
+	width: 900px;
+}
+
 .temperature {
 	margin: 0 0 0 50%;
 	font-size: 36px;
 	text-align: right
 }
 
+.summary {
+	background-image: linear-gradient(lightgreen, green);
+	color: white;
+	font-size: 16px;
+}
+
 .five-day {
+	text-align: center;
+	width: 900px;
+	height: 310px;
+	margin: 0;
+	padding: 0;
+}
+
+.five-day-card {
 	float:left;
+	width: 160px;
+	height: 300px;
+	margin: 0 10px;
+	padding: 0;
+	background-image: linear-gradient(lightblue, blue);
+	border: 3px solid yellow;
+	border-radius: 8px;
+}
+
+.weekday {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+
+}
+
+.temp-high {
+	font-size: 48px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	color: red;
+}
+
+.temp-low {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	color: blue;
+}
+
+.weather-icon {
+	font-size: 64px;
+	margin: 0;
+	padding: 0;
+	color: white;
 }
