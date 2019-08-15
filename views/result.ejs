@@ -1,1 +1,18 @@
-<h2>Results Page</h2>
+<% days.forEach((day) =>{ %>
+    <div class="card horizontal blue-grey col s4 offset-s4">
+        <span id="time"> <%= day.time  %></span>
+        <span><i class=""></i></span>
+
+        <span id="low">Low <%= day.lowTemp  %>
+            <i class="wi wi-fahrenheit"></i></span>
+
+        <span id="high">High <%= day.highTemp  %>
+            <i class="wi wi-fahrenheit"></i></span>
+
+        <span id="summary"><%= day.summary  %>
+            <i class="wi <%= day.summaryIcon  %>"></i></span>
+
+        <span id="wind-speed"> <%= day.windSpeed  %> MPH
+            <i class="wi  <%= day.windSpeedIcon  %>"></i></span>
+    </div>
+    <% }) %>
