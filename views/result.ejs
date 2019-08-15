@@ -1,1 +1,40 @@
 <h2>Results Page</h2>
+
+<h1>For <%= location %> (Lat:<%= latitude %> Long: <%= longitude %>)</h1>
+
+
+
+<table style="width:60%">
+  <tr>
+    <th>Current Conditions</th>
+  </tr>
+  <tr>
+    <td><%= currently.summary%></td>
+  </tr>
+  <tr>
+    <td>Current Temperature: <%= Math.round(currently.temperature) %>°F</td>
+  </tr>
+  <tr>
+    <td>Winds: <%= Math.round(currently.windSpeed)%> MPH from <%= d2d(currently.windBearing)%></td>
+  </tr>
+</table>
+
+<h1> Five-Day Forecast: </h1>
+
+<% for (i = 0; i < 5; i++) { %>
+    <table style="width:60%">
+  <tr>
+    <th><%= moment.unix(fiveDay.data[i].time).format('ddd MMM Do') %></th>
+  </tr>
+  <tr>
+    <td><%= fiveDay.data[i].summary%></th>
+  </tr>
+  <tr>
+    <td>High: <%= Math.round(fiveDay.data[i].temperatureHigh) %>°F</td>
+    <td>Low: <%= Math.round(fiveDay.data[i].temperatureLow) %>°F</td>
+  </tr>
+  <tr>
+    <td>Winds: <%= Math.round(fiveDay.data[i].windSpeed)%> MPH from <%= d2d(fiveDay.data[i].windBearing) %></td>
+  </tr>
+</table>
+<% } %>

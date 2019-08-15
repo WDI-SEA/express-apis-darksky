@@ -15,3 +15,13 @@ h1 {
 h2 {
   font-size: 20px;
 }
+table {
+    margin: 10px;
+    padding: 10px;
+}
+td {
+    border: 1px solid black;
+}
+th {
+    text-align: center;
+}
