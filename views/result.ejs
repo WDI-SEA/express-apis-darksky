@@ -1,1 +1,24 @@
-<h2>Results Page</h2>
+
+<div id="location">
+    <p>Coordinates: Lat: <%=locationY%> Longit: <%=locationX%></p>
+    <div id="temp">It is currently <%= temp%>°F in <%= name%>.<div> 
+</div>
+
+
+<h2>FORCAST: <%= name.toUpperCase()%></h2>
+  <% for(let i = 0; i < 5; i++) { %>
+
+<div class="row">
+  <div class="column" >
+    <h2><%=moment.unix(data[i].time).format('dddd')%></h2>
+    <p class="weather"><%=data[i].icon.toUpperCase()%></p>
+    <h1 class="icon"><%=icons[data[i].icon]%></h1>
+    <p class="text">Daily Weather: <br /> <%=data[i].summary%></p>
+    <p class="text"> Min Temp:  <%= data[i].temperatureMin%></p>
+    <p class="text"> Max Temp:  <%= data[i].temperatureMax%></p>
+  </div>
+  <% }%>
+</div>
+
+        
+           

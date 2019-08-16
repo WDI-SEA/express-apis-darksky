@@ -21,8 +21,14 @@
   "homepage": "https://github.com/WDI-SEA/express-apis-darksky#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "locals": "0.0.4",
+    "moments": "0.0.2",
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0",
+    "simple-geocoder": "^0.1.2"
   }
 }

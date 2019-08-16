@@ -15,3 +15,36 @@ h1 {
 h2 {
   font-size: 20px;
 }
+
+* {
+  box-sizing: border-box;
+}
+#temp {
+  font-size: 10px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  height: 390px;
+  background-color:rgb(207, 194, 194);
+  border: 1px solid black;
+}
+.weather {
+  background-color:rgb(240, 219, 219);
+}
+.icon {
+  font-size: 40px;
+}
+.text {
+  font-size: 15px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  border-right: 1px solid black;
+}
