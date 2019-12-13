@@ -37,7 +37,7 @@ app.post('/result', function(req, res){
       let coord = [locations.x.toFixed(2), locations.y.toFixed(2)]
       let lng = locations.x.toFixed(4)
       let lat = locations.y.toFixed(4)
-      request('https://api.darksky.net/forecast/'+process.env.DARKSKY_API_KEY+lat+','+lng, (error, response, body) => {
+      request('https://api.darksky.net/forecast/'+process.env.DARKSKY_API_KEY+'/'+lat+','+lng, (error, response, body) => {
       console.log('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       // console.log('body:', body);
