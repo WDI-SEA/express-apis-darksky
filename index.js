@@ -1,8 +1,10 @@
 // Require node modules that you need
+require('dotenv').config();
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
 var geocoder = require('simple-geocoder');
+var request = require('request');
 
 // Declare your app
 var app = express();
@@ -21,15 +23,25 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  let location = req.body
-  console.log(location)
+  var location = req.body;
 
   geocoder.geocode(location.name, function(success, locations) {
     if(success) {
-      console.log('locations is', locations)
       location['coordinateLongitude'] = locations.x;
       location['coordinateLatitude'] = locations.y;
-      res.render('result', {location});
+
+      var urlToCall = process.env.DARK_SKY_BASE_URL + '' + location.coordinateLatitude + ',' + location.coordinateLongitude;
+      var temperatureInF = ''
+      request(urlToCall, function(error, response, body) {
+
+        // Parse the data 
+        var result = JSON.parse(body);
+    
+        // Do something with that data!
+        weatherInfo = result.currently
+
+        res.render('result', {location, weatherInfo});
+      });
     }
   });
 
