@@ -21,6 +21,7 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   res.render('result');
+  console.log(req.body);
 });
 
 // Listen on PORT 3000
