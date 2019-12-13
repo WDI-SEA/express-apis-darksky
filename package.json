@@ -23,7 +23,9 @@
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "node-open-geocoder": "^4.0.0",
+    "simple-geocoder": "^0.1.2"
   },
   "devDependencies": {}
 }
