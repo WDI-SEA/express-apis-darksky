@@ -31,16 +31,17 @@ app.post('/', function(req, res){
       location['coordinateLatitude'] = locations.y;
 
       var urlToCall = process.env.DARK_SKY_BASE_URL + '' + location.coordinateLatitude + ',' + location.coordinateLongitude;
-      var temperatureInF = ''
+
       request(urlToCall, function(error, response, body) {
 
         // Parse the data 
         var result = JSON.parse(body);
     
         // Do something with that data!
-        weatherInfo = result.currently
+        var weatherInfo = result.currently
+        var weatherForecast = result.daily.data
 
-        res.render('result', {location, weatherInfo});
+        res.render('result', {location, weatherInfo, weatherForecast});
       });
     }
   });

@@ -1,6 +1,34 @@
-<h2>Results Page</h2>
+<h5>Location: <%= location.name %> </h5>
+<h6>Longitude: <%= location.coordinateLongitude %> | Latitude: <%= location.coordinateLatitude %> </h6>
+<h5>The temperature in <%= location.name %> is currently <%= weatherInfo.temperature %> °F.</h5>
 
-<h3>Location: <%= location.name %> </h3>
-<h2>Longitude: <%= location.coordinateLongitude %> </h2>
-<h2>Latitude: <%= location.coordinateLatitude %> </h2>
-<h2>The temperature in <%= location.name %> is <%= weatherInfo.temperature %> degrees Farenheit.</h2>
+<% weatherForecast.forEach( (day) => { %>
+
+    <div class="col l4">
+        <div class="card-panel blue lighten-1">
+        <p class="white-text">
+            <% var date = new Date(day.time * 1000).toLocaleDateString() %>
+            <%= date %>
+        </p>
+        <p class="white-text">
+            <% var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] %>
+            <% var dayOfWeek = days[new Date(day.time * 1000).getDay()] %>
+            <%= dayOfWeek %>
+        </p>
+        <p class="white-text"><%= weatherInfo.summary %></p>
+        <p class="white-text">
+            <% var highT = day.temperatureHigh %>
+            High Temp: <%= highT %> °F
+        </p>
+        <p class="white-text">
+            <% var lowT = day.temperatureLow %>
+            Low Temp: <%= lowT %> °F
+        </p>
+        <p class="white-text">
+            <% var wind = day.windSpeed %>
+            Wind: <%= wind %> MPH
+        </p>
+    </div>
+    </div>
+
+<% }) %>
