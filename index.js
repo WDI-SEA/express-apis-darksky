@@ -31,11 +31,12 @@ app.post('/results', function(req, res){
       let coord = [locations.x.toFixed(2), locations.y.toFixed(2)]
       res.render('result', {myData: location, myCoord: coord});
       let lng = locations.x.toFixed(2)
-      let lat = locations.y.toFixed()
+      let lat = locations.y.toFixed(2)
       console.log(lat)
       console.log(lng)
-      request('https://api.darksky.net/forecast/22e75dafa4c9846887b39a60718a76f8/'+lat+','+lng, (error, response, body) => {
-        console.log('0')
+      let urlToCall = process.env.DARK_SKY_BASE_URL + lat + ',' + lng;
+      request('https://api.darksky.net/forecast/' + urlToCall, (error, response, body) => {
+      console.log('0')
       console.log('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       // console.log('body:', body); // Print the HTML for the Google homepage.
