@@ -71,6 +71,9 @@ REPEAT, console.logs from your backend will print on your terminal, NOT your bro
 
 `npm install simple-geocoder`
 
+**NOTE Dec 2019: simple-geocoder looks like it may have stopped being updated.** 
+[node-open-geocoder](https://www.npmjs.com/package/node-open-geocoder) may be a possible alternative.
+
 #### 4. Require Geocoder in index.js
 
 This is the package we're going to use to figure out latitude-longitude coordinates for the location or address the user typed. Check out the [documentation for simple-geocoder](https://www.npmjs.com/package/simple-geocoder).
