@@ -2,6 +2,13 @@
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+var geocoder = require('simple-geocoder');
+
+// geocoder.geocode('1600 Pennsylvania Ave NW, Washington, DC 20500', function(success, locations) {
+// 	if(success) {
+// 		console.log("Location: ", locations.x, locations.y);
+// 	}
+// });
 
 // Declare your app
 var app = express();
@@ -21,13 +28,15 @@ app.get('/', function(req, res){
 
 app.post('/result', function(req, res){
   console.log(req.body)
+  geocoder.geocode(req.body, (success, locations) => {
+    if(success) {
+      console.log("Location: ", locations.x, locations.y)
+    }
+  })
   res.render('result');
-  
 });
 
-// app.get('*', (req, res) => {
-//   res.render('error404')
-// })
+
 
 // Listen on PORT 3000
 app.listen(3000, function(){
