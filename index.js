@@ -2,14 +2,10 @@
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+let request = require('request');
 var geocoder = require('simple-geocoder');
 
-// geocoder.geocode('1600 Pennsylvania Ave NW, Washington, DC 20500', function(success, locations) {
-// 	if(success) {
-// 		console.log("Location: ", locations.x, locations.y);
-// 	}
-// });
-
+//47.608013,-122.335167
 // Declare your app
 var app = express();
 
@@ -26,16 +22,32 @@ app.get('/', function(req, res){
   res.render('home');
 });
 
+
+  // request('https://api.darksky.net/forecast/' + process.env.DARK_SKY_API_KEY + '47.608013' + ',' + '-122.335167',  (error, response, body) => {
+
+
+
+
+
 app.post('/result', function(req, res){
-  geocoder.geocode('req.body.location', (success, locations) => {
+  let location = req.body.location
+  geocoder.geocode(location, (success, locations) => {
     if(success) {
-      console.log("Location: ", locations.x, locations.y)
+      let coord = [locations.x.toFixed(2), locations.y.toFixed(2)]
+      let lng = locations.x.toFixed(4)
+      let lat = locations.y.toFixed(4)
+      request('https://api.darksky.net/forecast/538810c2465fd7b05700a1e5eb6ccffa/'+lat+','+lng, (error, response, body) => {
+      console.log('error:', error); // Print the error if one occurred
+      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      // console.log('body:', body);
+      var info = JSON.parse(body)
+      var temp = info.currently.temperature
+      res.render('result', {myData: location, myCoord: coord, temperature: temp});
+    })
     }
-    res.render('result');
   })
   console.log(req.body)
 });
-
 
 
 // Listen on PORT 3000
