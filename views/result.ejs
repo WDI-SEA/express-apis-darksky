@@ -2,30 +2,146 @@
 <p>Coordinates: <%= Math.floor(localCoordinates.y) %>°, <%= Math.floor(localCoordinates.x) %>°</p>
 
 <h5>Current Temperature: <%= localTemp %> ℉</h5>
-<!-- 
-<h1>Next 5 Days:</h1>
 
-<h6>Monday</h6>
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Today</span>
+                <% let today = dailyInfo[0] %>
 
+                <!-- date -->
+                <p><%=(today.date.getMonth() + 1) + '/' + today.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= today.description %></p>
+                <!-- high/low temp -->
 
+                <h2><%= today.highTemp + ' / ' + today.lowTemp %></h2>
+                <p>high/low</p>
 
+                <!-- windspeed -->
+                <h2><%= today.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h6>Monday</h6>
+<h1>5 Day Forecast:</h1>
+<% let daysOfWeek = { 0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'} %>
 
+<div class="row">
+    <div class="col s2">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Tomorrow</span>
+                <% let day1 = dailyInfo[1] %>
 
+                <!-- date -->
+                <p><%=(day1.date.getMonth() + 1) + '/' + day1.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= day1.description %></p>
+                <!-- high/low temp -->
 
+                <h2><%= day1.highTemp + ' / ' + day1.lowTemp %></h2>
+                <p>high/low</p>
 
+                <!-- windspeed -->
+                <h2><%= day1.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col s2">
+        <div class="card">
+            <div class="card-content">
+                <% let day2 = dailyInfo[2] %>
+                <% let dayOfWeek = day2.date.getDay().toString() %>
+                <% console.log(daysOfWeek[dayOfWeek])%>
+                <span class="card-title"><%= daysOfWeek[dayOfWeek] %></span>
+               
+                <!-- date -->
+                <p><%=(day2.date.getMonth() + 1) + '/' + day2.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= day2.description %></p>
+                <!-- high/low temp -->
 
-<h6>Monday</h6>
+                <h2><%= day2.highTemp + ' / ' + day2.lowTemp %></h2>
+                <p>high/low</p>
 
+                <!-- windspeed -->
+                <h2><%= day2.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col s2">
+        <div class="card">
+            <div class="card-content">
+                <% let day3 = dailyInfo[3] %>
+                <% let dayOfWeek3 = day3.date.getDay().toString() %>
+                <% console.log(daysOfWeek[dayOfWeek3])%>
+                <span class="card-title"><%= daysOfWeek[dayOfWeek3] %></span>
+               
+                <!-- date -->
+                <p><%=(day3.date.getMonth() + 1) + '/' + day3.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= day3.description %></p>
+                <!-- high/low temp -->
 
+                <h2><%= day3.highTemp + ' / ' + day3.lowTemp %></h2>
+                <p>high/low</p>
 
+                <!-- windspeed -->
+                <h2><%= day3.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col s2">
+        <div class="card">
+            <div class="card-content">
+                <% let day4 = dailyInfo[4] %>
+                <% let dayOfWeek4 = day4.date.getDay().toString() %>
+                <% console.log(daysOfWeek[dayOfWeek4])%>
+                <span class="card-title"><%= daysOfWeek[dayOfWeek4] %></span>
+               
+                <!-- date -->
+                <p><%=(day4.date.getMonth() + 1) + '/' + day4.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= day4.description %></p>
+                <!-- high/low temp -->
 
-<h6>Monday</h6>
+                <h2><%= day4.highTemp + ' / ' + day4.lowTemp %></h2>
+                <p>high/low</p>
 
+                <!-- windspeed -->
+                <h2><%= day4.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col s2">
+        <div class="card">
+            <div class="card-content">
+                <% let day5 = dailyInfo[5] %>
+                <% let dayOfWeek5 = day5.date.getDay().toString() %>
+                <% console.log(daysOfWeek[dayOfWeek5])%>
+                <span class="card-title"><%= daysOfWeek[dayOfWeek5] %></span>
+               
+                <!-- date -->
+                <p><%=(day5.date.getMonth() + 1) + '/' + day5.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= day5.description %></p>
+                <!-- high/low temp -->
 
+                <h2><%= day5.highTemp + ' / ' + day5.lowTemp %></h2>
+                <p>high/low</p>
 
-
-
-
-<h6>Monday</h6> -->
+                <!-- windspeed -->
+                <h2><%= day5.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -31,11 +31,27 @@ app.post('/', function(req, res){
         console.log('error:', error)
         console.log('statusCode:', response && response.statusCode)
         localInfo = JSON.parse(body)
-        res.render('result', {localLocation: req.body.location, localCoordinates: locations, localTemp: localInfo.currently.temperature })
+
+        dailyAPIData = localInfo.daily.data
+        dailySiteData = []
+
+        for (let i = 0; i < 6; i++) {
+          let object = {
+            'date' : new Date(dailyAPIData[i].time * 1000),
+            'highTemp': dailyAPIData[i].temperatureHigh,
+            'lowTemp': dailyAPIData[i].temperatureLow,
+            'description': dailyAPIData[i].summary,
+            'windSpeed': dailyAPIData[i].windSpeed
+          }
+          dailySiteData.push(object)
+        }
+
+        res.render('result', {localLocation: req.body.location, localCoordinates: locations, localTemp: localInfo.currently.temperature, dailyInfo: dailySiteData })
       })
     }
   });
 });
+
 
 
 
