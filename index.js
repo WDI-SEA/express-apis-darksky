@@ -27,13 +27,13 @@ app.get('/', function(req, res){
 });
 
 app.post('/result', function(req, res){
-  console.log(req.body)
-  geocoder.geocode(req.body, (success, locations) => {
+  geocoder.geocode('req.body.location', (success, locations) => {
     if(success) {
       console.log("Location: ", locations.x, locations.y)
     }
+    res.render('result');
   })
-  res.render('result');
+  console.log(req.body)
 });
 
 
