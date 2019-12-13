@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 
 // Include any middleware here
 app.use(layouts);
-app.use(express.static('static'));
+app.use('/', express.static('static'));
 app.use(parser.urlencoded({ extended: false }));
 
 // Declare routes
@@ -19,9 +19,15 @@ app.get('/', function(req, res){
   res.render('home');
 });
 
-app.post('/', function(req, res){
+app.post('/result', function(req, res){
+  console.log(req.body)
   res.render('result');
+  
 });
+
+// app.get('*', (req, res) => {
+//   res.render('error404')
+// })
 
 // Listen on PORT 3000
 app.listen(3000, function(){
