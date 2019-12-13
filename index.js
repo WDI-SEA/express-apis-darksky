@@ -42,8 +42,17 @@ app.post('/result', function(req, res){
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       // console.log('body:', body);
       var info = JSON.parse(body)
+      var daily = info.daily
       var temp = info.currently.temperature
-      res.render('result', {myData: location, myCoord: coord, temperature: temp});
+
+    for (let i = 0; i <= 5; i++) {
+      dailyTempLow = daily.data[i].temperatureLow
+      dailyTempHigh = daily.data[i].temperatureHigh
+      dailyDescription = daily.data[i].summary
+      dailyWind = daily.data[i].windSpeed
+      res.render('result', {myData: location, myCoord: coord, temperature: temp, dailyTempLow: dailyTempLow, dailyTempHigh: dailyTempHigh, dailyDescription: dailyDescription, dailyWind: dailyWind});
+    }
+
     })
     }
   })
