@@ -23,16 +23,16 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  //geocode
+  let localInfo
+  //geocode & request dark sky API
   geocoder.geocode(req.body.location, function(success, locations) {
     if(success) {
       request(process.env.DARK_SKY_API_BASE_URL + locations.y + ',' + locations.x, (error, response, body) => {
         console.log('error:', error)
         console.log('statusCode:', response && response.statusCode)
-        let result = JSON.parse(body)
-        console.log(result)
+        localInfo = JSON.parse(body)
+        res.render('result', {localLocation: req.body.location, localCoordinates: locations, localTemp: localInfo.currently.temperature })
       })
-      res.render('result', {myLocation: req.body.location, myCoordinates: locations})
     }
   });
 });
