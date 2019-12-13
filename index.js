@@ -1,10 +1,11 @@
 // Require node modules that you need
-var express = require('express');
-var layouts = require('express-ejs-layouts');
-var parser = require('body-parser');
+let express = require('express');
+let layouts = require('express-ejs-layouts');
+let parser = require('body-parser');
+let geocoder = require('simple-geocoder')
 
 // Declare your app
-var app = express();
+let app = express();
 
 // Tell express what view engine you want to use
 app.set('view engine', 'ejs');
@@ -20,8 +21,16 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  res.render('result');
+  //geocode
+  geocoder.geocode(req.body.location, function(success, locations) {
+    if(success) {
+      res.render('result', {myLocation: req.body.location, myCoordinates: locations})
+    }
+  });
 });
+
+
+
 
 // Listen on PORT 3000
 app.listen(3000, function(){
