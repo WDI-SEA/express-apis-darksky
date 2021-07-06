@@ -1,1 +1,69 @@
-<h2>Results Page</h2>
+<h2><%= localLocation %></h2>
+<p>Coordinates: <%= Math.floor(localCoordinates.y) %>°, <%= Math.floor(localCoordinates.x) %>°</p>
+
+<h5>Current Temperature: <%= localTemp %> ℉</h5>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Today</span>
+                <% let today = dailyInfo[0] %>
+
+                <!-- date -->
+                <p><%=(today.date.getMonth() + 1) + '/' + today.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= today.description %></p>
+                <!-- high/low temp -->
+
+                <h2><%= today.highTemp + ' / ' + today.lowTemp %></h2>
+                <p>high/low</p>
+
+                <!-- windspeed -->
+                <h2><%= today.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1>5 Day Forecast:</h1>
+<% let daysOfWeek = { 0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'} %>
+
+
+
+<div class="row">
+    <div class="col s1"></div>
+
+    <% dailyInfo.forEach(day => { %>
+        <% if (day != dailyInfo[0]) {%>
+        
+        <div class="col s2">
+        <div class="card medium">
+            <div class="card-content">
+                <% let dayOfWeek = day.date.getDay().toString() %>
+                <span class="card-title"><%= daysOfWeek[dayOfWeek] %></span>
+                <!-- date -->
+                <p><%=(day.date.getMonth() + 1) + '/' + day.date.getDate()%></p>
+                <!-- summary -->
+                <p><%= day.description %></p>
+                <!-- high/low temp -->
+
+                <h2><%= day.highTemp + ' / ' + day.lowTemp %></h2>
+                <p>high/low</p>
+
+                <!-- windspeed -->
+                <h2><%= day.windSpeed + 'MPH' %></h2>
+                <p>Windspeed</p>
+            </div>
+            </div>
+            </div>
+        <% } %>
+    <%})%>
+
+</div>
+
+
+
+
+  
