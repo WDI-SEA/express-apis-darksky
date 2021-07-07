@@ -1,7 +1,11 @@
 // Require node modules that you need
-var express = require('express');
-var layouts = require('express-ejs-layouts');
-var parser = require('body-parser');
+require('dotenv').config()
+let express = require('express');
+let layouts = require('express-ejs-layouts');
+let parser = require('body-parser');
+let geocoder = require('simple-geocoder');
+let request = require('request')
+
 
 // Declare your app
 var app = express();
@@ -16,11 +20,33 @@ app.use(parser.urlencoded({ extended: false }));
 
 // Declare routes
 app.get('/', function(req, res){
-  res.render('home');
+  res.render('home') 
 });
 
-app.post('/', function(req, res){
-  res.render('result');
+app.post('/results', function(req, res){
+  let location = req.body.location
+  geocoder.geocode(location, (success, locations) => {
+    if(success) {
+      console.log("Location: ", locations.x, locations.y)
+      let coord = [locations.x.toFixed(2), locations.y.toFixed(2)]
+      let lng = locations.x.toFixed(2)
+      let lat = locations.y.toFixed(2)
+      console.log(lat)
+      console.log(lng)
+      request('https://api.darksky.net/forecast/' + process.env.DARK_SKY_BASE_URL + '/' + lat + ',' + lng, (error, response, body) => {
+        console.log('0')
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        // console.log('body:', body); // Print the HTML for the Google homepage.
+        let result = JSON.parse(body)
+        console.log(result)
+        let info = result.currently.temperature
+        console.log(info)
+        res.render('result', {myData: location, myCoord: coord, info: info});
+    })
+    }
+  })
+  console.log(req.body)
 });
 
 // Listen on PORT 3000
